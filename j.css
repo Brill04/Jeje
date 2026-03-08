@@ -1,0 +1,624 @@
+:root {
+  --bg-pink: #ffd1dc;
+  --dark-pink: #b76e79;
+  --soft-white: #fff9fa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    -45deg,
+    var(--bg-pink),
+    var(--soft-white),
+    #ffecf2,
+    var(--bg-pink)
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  font-family: "Quicksand", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container Utama supaya rapi memanjang ke bawah */
+.surprise-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 20px;
+  transition: opacity 0.8s ease;
+}
+
+/* 1. HBD Tetap Ada di Awal */
+.hbd-card {
+  opacity: 1; /* Langsung muncul */
+  text-align: center;
+  z-index: 10;
+  margin-bottom: 20px;
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* 2. Animasi Zoom Smooth saat Klik */
+.zoom-out-effect {
+  transform: scale(5); /* Efek nge-zoom masuk ke dalam */
+  opacity: 0;
+  filter: blur(8px);
+  transition: all 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Pastikan main content muncul dengan smooth */
+.content-hidden {
+  display: none;
+  opacity: 0;
+}
+
+.content-visible {
+  display: block;
+  animation: fadeInPage 1.5s ease forwards;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* AMPLOP */
+.envelope-wrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.envelope {
+  width: 200px;
+  height: 130px;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-top: 80px solid #f2f2f2;
+}
+
+.heart-seal {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+}
+
+/* TULISAN DI BAWAH (Glassmorphism) */
+.envelope-instruction {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 320px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.envelope-instruction p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Sembunyikan isi scrapbook dulu */
+.content-hidden {
+  display: none;
+}
+main {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: 1s;
+}
+
+.main-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: var(--dark-pink);
+  margin: 25px 0 10px;
+}
+.typewriter {
+  height: 50px;
+  font-weight: 600;
+  color: #777;
+  font-size: 1.1rem;
+}
+
+/* Stickers */
+.sticker {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: bounce 2s infinite;
+}
+.s1 {
+  top: 50px;
+  left: -10px;
+}
+.s2 {
+  top: 150px;
+  right: -10px;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* 4. Scrapbook Gallery (Responsive) */
+.scrapbook-gallery {
+  margin: 50px 0;
+}
+.photo-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.photo-card {
+  background: white;
+  padding: 12px 12px 35px;
+  width: 85%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transform: rotate(var(--rotation));
+  border-radius: 2px;
+}
+.photo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+.photo-card p {
+  font-family: "Pangolin", cursive;
+  font-size: 1.3rem;
+  margin-top: 15px;
+  color: #666;
+}
+
+/* 5. Cake & Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 25px;
+  margin: 40px 0;
+}
+.cake-container {
+  position: relative;
+  width: 100px;
+  margin: 40px auto;
+  cursor: pointer;
+}
+.cake-body {
+  height: 60px;
+  background: #ffb6c1;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+}
+.cream {
+  height: 30px;
+  background: #fff;
+  border-radius: 50px 50px 0 0;
+}
+.candle {
+  position: absolute;
+  top: -30px;
+  left: 45%;
+  width: 10px;
+  height: 35px;
+  background: var(--gold);
+}
+.flame {
+  position: absolute;
+  top: -20px;
+  left: -2px;
+  width: 14px;
+  height: 22px;
+  background: radial-gradient(#fff, orange, red);
+  border-radius: 50% 50% 20% 20%;
+  animation: flicker 0.1s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    transform: scale(1) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(-2deg);
+  }
+}
+
+/* 6. Secret Section */
+.reveal-hidden {
+  display: none;
+  opacity: 0;
+  transition: 1.5s;
+}
+.reveal-active {
+  display: block;
+  opacity: 1;
+}
+
+.final-letter {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-family: "Pangolin", cursive;
+}
+
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin-top: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.behind-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  font-weight: bold;
+  color: var(--dark-pink);
+  font-size: 1.2rem;
+}
+#scratch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Music Button */
+.music-control {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.final-footer {
+  padding: 40px 0;
+  font-size: 0.9rem;
+  color: var(--dark-pink);
+  opacity: 0.7;
+}
+
+/* CSS UNTUK BUNGA BERJATUHAN */
+#petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Supaya di belakang teks */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  color: rgba(255, 182, 193, 0.7); /* Warna pink transparan */
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    top: 110%;
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+.hbd-card {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text: center;
+  width: 200%;
+  max-width: 260px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+/* Container Pop-up */
+/* Container Pop-up Melayang (Overlay) */
+/* Container Overlay - Ini 'Room' Utama */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Lebih gelap dikit biar fokus */
+  backdrop-filter: blur(8px);
+  display: flex; /* Ini WAJIB */
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.step-card {
+  background: white;
+  width: 85%;
+  max-width: 350px;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  /* Jangan pakai float atau absolute di sini */
+}
+
+/* Animasi muncul dari kecil ke besar */
+@keyframes popScale {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Class pembantu untuk menyembunyikan elemen */
+.hidden {
+  display: none !important;
+}
+
+/* Styling surat panjang di step terakhir */
+.letter-content {
+  max-height: 50vh;
+  overflow-y: auto;
+  text-align: left;
+  font-family: "Quicksand", sans-serif;
+  color: #444;
+  padding: 10px;
+}
+
+.btn-step,
+.btn-next {
+  /* Warna & Tampilan Dasar */
+  background: linear-gradient(
+    45deg,
+    var(--dark-pink),
+    #d8a7b1
+  ); /* Gradasi pink elegan */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase; /* Huruf kapital semua biar tegas */
+
+  /* Bentuk & Ukuran */
+  padding: 15px 35px;
+  border-radius: 50px; /* Sangat tumpul, oval sempurna */
+
+  /* Efek Bayangan (Shadow) agar Berdimensi */
+  box-shadow: 0 8px 20px rgba(183, 110, 121, 0.3);
+
+  /* Transisi Halus untuk Animasi */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Menghilangkan garis biru saat diklik di HP */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Posisi (untuk tombol Lanjut Je yang di luar pop-up) */
+  margin: 20px auto;
+  display: block;
+}
+
+/* --- EFEK HOVER (SAAT KURSOR DI ATAS TOMBOL - Desktop) --- */
+.btn-step:hover,
+.btn-next:hover {
+  background: linear-gradient(
+    45deg,
+    #d8a7b1,
+    var(--dark-pink)
+  ); /* Gradasi balik */
+  transform: translateY(-3px); /* Tombol sedikit naik */
+  box-shadow: 0 12px 25px rgba(183, 110, 121, 0.4); /* Bayangan lebih tebal */
+}
+
+/* --- EFEK ACTIVE (SAAT TOMBOL DITEKAN/DIKLIK - Mobile & Desktop) --- */
+.btn-step:active,
+.btn-next:active {
+  transform: translateY(1px) scale(0.97); /* Tombol turun & mengecil sedikit */
+  box-shadow: 0 5px 10px rgba(183, 110, 121, 0.2); /* Bayangan menipis */
+}
+
+/* --- KHUSUS TOMBOL 'LANJUT JE ✨' (Yang muncul setelah gosok) --- */
+/* Kita kasih animasi denyut biar user tahu harus klik ini */
+#btn-start-popup {
+  animation: heartBeatButton 2s infinite;
+}
+
+@keyframes heartBeatButton {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.05);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.05);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- KHUSUS TOMBOL DI DALAM POP-UP --- */
+.step-card .btn-step {
+  margin-top: 25px; /* Jarak dari teks di atasnya */
+  width: auto; /* Lebar menyesuaikan teks */
+  display: inline-block; /* Di tengah kartu */
+}
+/* Styling Label Fase */
+.phase-label {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.8rem;
+  color: var(--dark-pink);
+  text-align: center;
+  margin: 40px 0 20px;
+  opacity: 0.9;
+}
+
+.phase-container {
+  margin-bottom: 60px;
+}
+
+/* Styling Kartu Foto & Komentar */
+.photo-card {
+  background: white;
+  padding: 10px 10px 25px; /* Padding bawah lebih besar untuk teks */
+  width: 90%; /* Pas untuk layar HP */
+  max-width: 320px;
+  margin: 15px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; /* Gaya polaroid modern */
+  transition: transform 0.3s ease;
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto; /* Agar aspek rasio foto asli tetap terjaga */
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* Teks Komentar di Bawah Foto */
+.photo-caption {
+  font-family: "Pangolin", cursive;
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 12px;
+  text-align: center;
+  padding: 0 5px;
+  line-height: 1.3;
+}
+
+/* Pastikan grid tetap vertikal di HP */
+.photo-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.step-card {
+  background: white;
+  width: 85%;
+  max-width: 350px;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* Menghapus fixed height agar mengikuti konten */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.letter-content {
+  /* Batas maksimal agar tidak luber dari layar HP */
+  max-height: 65vh;
+  overflow-y: auto; /* Bisa di-scroll kalau sangat panjang */
+  text-align: left;
+  font-family: "Quicksand", sans-serif;
+  color: #444;
+  padding: 5px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+}

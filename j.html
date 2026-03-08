@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Happy Birthday Sunshine! ✨</title>
+    <link rel="stylesheet" href="J.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&family=Pangolin&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <div id="petals-container"></div>
+    <div class="bg-wrapper">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+
+    <div class="music-control" onclick="toggleMusic()">
+      <span id="music-icon">🎵</span>
+      <audio id="bgMusic" loop>
+        <source
+          src="yung kai - Blue Piano Cover Sheet Music.mp3" 
+          type="audio/mpeg"
+        />
+      </audio>
+    </div>
+
+    <div id="surprise-area" class="surprise-container">
+      <div id="hbd-card" class="hbd-card">
+        <h1 class="main-title">HBD</h1>
+        <h2 class="name-title">WONDERWOMEN ✨</h2>
+      </div>
+
+      <div class="envelope-wrapper" onclick="startReveal()">
+        <div id="main-envelope" class="envelope">
+          <div class="flap" id="envelope-flap"></div>
+          <div class="heart-seal">⚡</div>
+          <div id="photo-fly-out" class="photo-fly-container">
+            <img src="foto1.jpg" class="fly-img img1" />
+            <img src="foto2.jpg" class="fly-img img2" />
+            <img src="foto3.jpg" class="fly-img img3" />
+          </div>
+        </div>
+        <div class="envelope-instruction glass">
+          <p class="msg">WARNINGG!! BISA BUAT SENYUM-SENYUM SENDIRI 😊</p>
+          <p class="hint">(bukak dong)</p>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" class="content-hidden">
+      <section class="hero">
+        <h1 class="main-title">
+          Happy Birthday, <span class="name">Jesslyn!</span>
+        </h1>
+        <div class="typewriter">
+          <p id="typewriter-text"></p>
+        </div>
+        <div class="sticker s1">🌸</div>
+        <div class="sticker s2">✨</div>
+      </section>
+
+      <section class="scrapbook-gallery">
+        <h2 class="section-title">Our Journey ✨</h2>
+
+        <div class="phase-container">
+          <h3 class="phase-label">── Fase SMP ──</h3>
+          <div class="photo-grid">
+            <div class="photo-card" style="--rotation: -3deg">
+              <img src="smp1.jpeg" alt="SMP 1" />
+              <p class="photo-caption">
+                Noh kann wibu banget vibes e je wkwk 😂
+              </p>
+            </div>
+            <div class="photo-card" style="--rotation: 2deg">
+              <img src="smp2.jpeg" alt="SMP 2" />
+              <p class="photo-caption">Anime favorite apa mbak??🤣🤣</p>
+            </div>
+            <div class="photo-card" style="--rotation: -1deg">
+              <img src="smp3.jpeg" alt="SMP 3" />
+              <p class="photo-caption">nah iki pas Nonton anime apa je🤣🤣</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-container">
+          <h3 class="phase-label">── Fase SMA ──</h3>
+          <div class="photo-grid">
+            <div class="photo-card" style="--rotation: 3deg">
+              <img src="sma1.jpeg" alt="SMA 1" />
+              <p class="photo-caption">Uanjay sekre marching ter✨</p>
+            </div>
+            <div class="photo-card" style="--rotation: -4deg">
+              <img src="sma2.jpeg" alt="SMA 2" />
+              <p class="photo-caption">Tambah tinggi yee..bawahku seh tapi sek an 🤣</p>
+            </div>
+            <div class="photo-card" style="--rotation: 2deg">
+              <img src="sma3.jpeg" alt="SMA 3" />
+              <p class="photo-caption">Ini lucu sih</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-container">
+          <h3 class="phase-label">── Fase Kuliah ──</h3>
+          <div class="photo-grid">
+            <div class="photo-card" style="--rotation: -2deg">
+              <img src="kuliah1.jpeg" alt="Kuliah 1" />
+              <p class="photo-caption">ANJAYY GLOW UP😱</p>
+            </div>
+            <div class="photo-card" style="--rotation: 4deg">
+              <img src="kuliah2.jpeg" alt="Kuliah 2" />
+              <p class="photo-caption">
+                ANJAYY ANAK ITS😎.. sampek sini tau kan berarti foto semua ini
+                dari siapa wkwkw😂😂
+              </p>
+            </div>
+            <div class="photo-card" style="--rotation: -3deg">
+              <img src="kuliah3.jpeg" alt="Kuliah 3" />
+              <p class="photo-caption">wes dadi Wonderwoman saiki👑</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cake-area glass">
+        <h3>AYO DOAA SEK BRU DITIUP🎂</h3>
+        <div class="cake-container" onclick="blowCandle()">
+          <div class="candle"><div class="flame" id="flame"></div></div>
+          <div class="cake-body"><div class="cream"></div></div>
+        </div>
+        <p id="cake-msg">Ketuk lilinnya...</p>
+      </section>
+
+      <div id="secret-reveal" class="reveal-hidden">
+        <section class="letter-box glass">
+          <p class="final-letter">
+            Hai hehehe... ga kerasa ya udah nambah umur lagi aja lu. cie tambah
+            tua wkwkwk🤣🤣🤣... ga ga gaa dohhh sek 19 kan tch masih mudah banget itu
+            dont panic brook.. foto-foto itu diatas itu secara ga lansung
+            ngingetin kamu kalau sekarang kamu sudah dewasa jee dah bukan anak
+            kecikkk,so kamu harus bersyukur yaa masih diberi kesempatan ma tuhan
+            sampek di bisa di titik ini😊... wkwk gmna?? perasaannya sekarang??
+            hepi ga dapet kado dari gue wkwk....INGETTT BUKAK WEB INI DLU BARU
+            BUKAK KADONYA LO YAA AWAS AJA KALO KAMU BACA INI DALAM KEADAAN SUDAH
+            DIBUKAK KADONYA...Semoga 2 kado yang ku kasih ini (kado fisik yang
+            nanti kamu buka dan website ini) bisa menjadi salah satu kado yang
+            berkesan buat kamu ya... dan alasan aku se effort ini adalah mungkin
+            ak ngerasa dulu ak gabisa ngasih experience yang berkesan dan
+            membekas aja ke kamu,effortku kurang lah dalam segala hal...so maybe
+            semoga ini bisa nutupin salah satunya yaa,ya meskipun telat gapapa
+            laya wkwk... Aku mo cerita dkit nieh waktu ak kenal kamu pertama
+            kali emang jujur vibes nya kek wibu akut seh je wkwk cuman ya
+            ternyata plot twist e ga nonton anime ternyata 😂.... ya gtu deh
+            pembukaan awal dari website ini kamu masih harus lanjut ke step
+            berikutnya okey dibawah itu udah ikutin ajee...maaf kalo semisal
+            kado yang ku kasih ini masih belum seberapa ya mungkin diluar sana
+            ada yang ngado kamu lebih berkesan dari kadoku ini cuman ya i hope
+            you sukak yaa😊... kamu harus berterimakasih juga lo sama beberapa
+            disini: 1. Jeni... karena ak mintak foto-foto mu itu dari dia wkwk
+            karena jujur foto pap-pap mu dlu udh kuhapus karena ak merasa ga
+            sopan aja kalau ak simpen 2. Kopi 3 gelasku dan biskuit roma wkwk...
+            why??? karna mereka lah aku bisa terjaga dari abis teraweh sampek
+            sahur selama 4 hari berturut, dari jumat sampek sekarang aku ngetik
+            teks ini sudah hari senin tanggal 9-maret-2026 jam 04.25 shubuhh
+            😂😂 buat bikin website ini....kalo kamu liat ya buat bikin website
+            gni ada ratusan line code yang ak buat di balik layarnya wkwk html
+            nya aja ada 264😱,css 598 line🤣🤣,javascriptnya hampir 300 berapa
+            tuhhh?? hitung sendiri deh anak ITS kan wkwk....yauda mungkin itu aja
+            pembukaannya okeh lanjut scroll jeee
+          </p>
+        </section>
+
+        <section class="scratch-card-box glass">
+          <p class="scratch-hint">
+            Cobak gosok je.. santai bukan nomer togel kok😊
+          </p>
+          <div class="canvas-container">
+            <div class="behind-text">
+              COBAKKK BUKAK KADONYAAAA😁😁😁 Kalo udah baru boleh next😉
+            </div>
+            <canvas id="scratch-canvas"></canvas>
+          </div>
+        </section>
+
+        <button
+          id="btn-start-popup"
+          class="btn-next hidden"
+          onclick="showPopup(1)"
+        >
+          Lanjut Je ✨
+        </button>
+
+        <div id="popup-sequence" class="popup-container hidden">
+    <div id="step-1" class="step-card hidden">
+        <p>"gmna sukak ga sama kalungnya?? i hope u like it yaa😊"</p>
+        <button class="btn-step" onclick="showPopup(2)">Next</button>
+    </div>
+
+    <div id="step-2" class="step-card hidden">
+        <p>"sudah siap baca suratnya?? kalo udh siap bisa klik next lagi ya jee mueheheh"</p>
+        <button class="btn-step" onclick="showPopup(3)">Next</button>
+    </div>
+
+    <div id="step-3" class="step-card hidden">
+        <p>"kecangkan sabuk pengamann je dan jangan nangis oke 😁😂"</p>
+        <button class="btn-step" onclick="showPopup(4)">Next</button>
+    </div>
+
+    <div id="step-4" class="step-card hidden">
+        <div class="letter-content">
+            <p>HAPPY BIRTHDAYYY JESSSLLLLLYYYNNNNN🥳🥳🥳 Semoga panjang umur
+                yaaa,sehat selalu,makin pintar,makin tinggi (kalo bisa), makin
+                cantik (ya meskipun wes cuantik seh saiki wkwk),
+                dilancarkan segala kegiatannmu terutama semoga kuliahmu 
+                lancar dan semua deh yang
+                baik-baik deh yaa....suka ga ma kadonya?? i hope u like it
+                yaa😊...Semoga di umur yang bertambah ini kamu juga bisa semakin
+                dewasa,tetap nurut sama ortu,dan bismillah bisa menjadi pribadi
+                yang lebih baik yaa😊....Senang rasanya bisa mengenal mu selama
+                ini... senang rasanya jga bisa sharing banyak hal ke
+                kamu...senang jga rasanya bisa menghabiskan waktu
+                bareng....senang juga rasanya bisa belajar bareng dan bertumbuh
+                bareng...senang semua deh wes pkok e wkwk😊😊....salah satu pesanku
+                di website ini INGAT YA JE!! mungkin ini agak alay dan mungkin
+                sekarang ak bukan sapa-sapa mu lagi... tapi gapapa buat nyemangatin
+                kamu aja okeh....SELAMA MASIH ADA AK DISINI KAMU GABAKALAN
+                KEHILANGAN SESEORANG YANG SELALU BANGGA DENGAN APAPUN USAHA DAN
+                PENCAPAIAN YANG KMU HASILKAN😉😉.... jadi buat kedepannya jangan
+                pernah takut untuk mencoba sesuatu apapun itu asalkan itu baik
+                untuk kamu dan lingkunganmu yaa dan semua itu harus kmu jalanin dengan
+                penuh keberanian serta totalitas ya kan u Wonderwoman harus berani dong
+                 dan selalu andalkan tuhanmu di
+                setiap apapun itu okehh... karena wonderwomen ya juga manusia kan😊😊...</p>
+        </div>
+        <button class="btn-step" onclick="showPopup(5)">Next</button>
+    </div>
+
+    <div id="step-5" class="step-card hidden">
+        <div class="letter-content">
+            <p>yeahh... website ini dah mo berakhir niehh... gmna?? ratenya berapa?? bagus ga wesbite gue wkwk??</p>
+        </div>
+        <button class="btn-step" onclick="showPopup(6)">Next</button>
+    </div>
+
+    <div id="step-6" class="step-card hidden">
+        <div class="letter-content">
+            <p>Aku harap kamu sukak yaa😊😊... dan aku harap website ini dari awal
+                 hingga akhir kamu gunakan ini tidak ada error sama sekali</p>
+        </div>
+        <button class="btn-step" onclick="showPopup(7)">Next</button>
+    </div>
+
+    <div id="step-7" class="step-card hidden">
+        <div class="letter-content">
+            <p>Pesan terakhir: 
+                Aku gatau kedepannya masih bisa jadi temanmu apa ndak,
+                 cuman semoga ini bisa menjadi kenangan yang bagus yaa😊... 
+                 Terimakasih sudah menikmati website dari developer pemula ini wkwkw.
+                GUA BRILLIAN,DEVELOPER MASADEPAN,GUA PAMITT 👌
+            </p>
+        </div>
+        <button class="btn-step" onclick="finishStory()">Selesai </button>
+    </div>
+</div>
+        
+          </div>
+        </div>
+      </div>
+
+      <footer class="final-footer">
+        <p>Dibuat dengan effort iki [Brillian] 🎀</p>
+      </footer>
+    </main>
+
+    <script src="J.js"></script>
+  </body>
+</html>
